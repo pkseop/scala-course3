@@ -44,13 +44,11 @@ object HorizontalBoxBlur {
   def blur(src: Img, dst: Img, from: Int, end: Int, radius: Int): Unit = {
   // TODO implement this method using the `boxBlurKernel` method
     for(
-      j <- 0 until src.height;
+      j <- from until end;
       i <- 0 until src.width
     ) {
-      if(j >= from && j < end) {
-        val blurredPix = scalashop.boxBlurKernel(src, i, j, radius)
-        dst.update(i, j, blurredPix)
-      }
+      val blurredPix = scalashop.boxBlurKernel(src, i, j, radius)
+      dst.update(i, j, blurredPix)
     }
   }
 

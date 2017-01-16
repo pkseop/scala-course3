@@ -45,13 +45,11 @@ object VerticalBoxBlur {
   def blur(src: Img, dst: Img, from: Int, end: Int, radius: Int): Unit = {
     // TODO implement this method using the `boxBlurKernel` method
     for(
-      i <- 0 until src.width;
+      i <- from until end;
       j <- 0 until src.height
     ) {
-      if(i >= from && i < end) {
-        val blurredPix = scalashop.boxBlurKernel(src, i, j, radius)
-        dst.update(i, j, blurredPix)
-      }
+      val blurredPix = scalashop.boxBlurKernel(src, i, j, radius)
+      dst.update(i, j, blurredPix)
     }
   }
 
